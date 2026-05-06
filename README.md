@@ -4,14 +4,6 @@
 
 ---
 
-## Live Demo
-
-- **Frontend**: [https://akshayrocks09.github.io/chronos/](https://akshayrocks09.github.io/chronos/)
-- **Backend API**: *[Coming Soon]*
-- **API Documentation**: [Swagger UI (Local)](http://localhost:8080/swagger-ui/index.html)
-
----
-
 ## Table of Contents
 - [Problem Statement](#problem-statement)
 - [Key Features](#key-features)
@@ -23,7 +15,6 @@
 - [API Endpoints](#api-endpoints)
 - [Database Schema](#database-schema)
 - [Security](#security)
-- [CI/CD](#cicd)
 - [Optimizations](#optimizations)
 - [Challenges Faced](#challenges-faced)
 - [Future Scope](#future-scope)
