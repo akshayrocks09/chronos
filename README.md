@@ -76,6 +76,18 @@ Navigate to `http://localhost:5173`.
 
 ---
 
+## 🌐 Deployment
+
+### Frontend (GitHub Pages)
+The frontend is configured for automatic deployment to GitHub Pages via GitHub Actions.
+1. Push changes to the `main` branch.
+2. GitHub Actions will build the UI and deploy it to the `gh-pages` branch.
+3. The site will be available at `https://<your-username>.github.io/chronos/`.
+
+*Note: Since GitHub Pages hosts static files, you must configure the `VITE_API_URL` environment variable in your deployment to point to your live backend.*
+
+---
+
 ## 🔒 Security Configuration
 
 Chronos enforces a **fail-fast** security policy. You MUST provide the following environment variables for the system to boot:
