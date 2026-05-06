@@ -231,10 +231,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## 🤝 Contact
 
 **Akshay Thapa**  
-- **LinkedIn**: [Your Profile](https://linkedin.com/in/akshay-thapa)
+- **LinkedIn**: [Your Profile]((https://www.linkedin.com/in/akshaythapa/))
 - **Portfolio**: [yourportfolio.com](https://yourportfolio.com)
 - **Email**: [your.email@example.com](mailto:your.email@example.com)
 
 ---
 
-<p align="center">Built with ❤️ by the Chronos Team</p>
+
