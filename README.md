@@ -1,14 +1,10 @@
-# ⏳ Chronos: Enterprise-Grade Distributed Job Scheduler
-
-<p align="center">
-  <img src="./assets/dashboard.png" alt="Chronos Dashboard" width="800" />
-</p>
+# Chronos: Enterprise-Grade Distributed Job Scheduler
 
 **Chronos** is a high-performance, distributed-ready job scheduling system designed for reliability, transparency, and developer productivity. It combines a robust **Spring Boot** backend with a premium **React** interface, enabling real-time monitoring and management of complex background tasks.
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
 - **Frontend**: [https://akshayrocks09.github.io/chronos/](https://akshayrocks09.github.io/chronos/)
 - **Backend API**: *[Coming Soon]*
@@ -16,27 +12,27 @@
 
 ---
 
-## 📋 Table of Contents
-- [Problem Statement](#-problem-statement)
-- [Key Features](#-key-features)
-- [Tech Stack](#-tech-stack)
-- [System Architecture](#-system-architecture)
-- [Project Structure](#-project-structure)
-- [Installation & Setup](#-installation--setup)
-- [Environment Variables](#-environment-variables)
-- [API Endpoints](#-api-endpoints)
-- [Database Schema](#-database-schema)
-- [Security](#-security)
-- [CI/CD](#-cicd)
-- [Optimizations](#-optimizations)
-- [Challenges Faced](#-challenges-faced)
-- [Future Scope](#-future-scope)
-- [License](#-license)
-- [Contact](#-contact)
+## Table of Contents
+- [Problem Statement](#problem-statement)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [System Architecture](#system-architecture)
+- [Project Structure](#project-structure)
+- [Installation & Setup](#installation--setup)
+- [Environment Variables](#environment-variables)
+- [API Endpoints](#api-endpoints)
+- [Database Schema](#database-schema)
+- [Security](#security)
+- [CI/CD](#cicd)
+- [Optimizations](#optimizations)
+- [Challenges Faced](#challenges-faced)
+- [Future Scope](#future-scope)
+- [License](#license)
+- [Contact](#contact)
 
 ---
 
-## 💡 Problem Statement
+## Problem Statement
 
 Traditional cron systems and simple task queues often fail to provide:
 1. **Visibility**: No real-time dashboard to monitor job status or execution history.
@@ -48,19 +44,19 @@ Traditional cron systems and simple task queues often fail to provide:
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-- **🚀 Advanced Scheduling**: Support for one-time (timestamp-based) and recurring (Cron-based) jobs.
-- **🛡️ Fault Tolerance**: Automatic retries with **Exponential Backoff** (10s, 20s, 40s...).
-- **💎 Premium Dashboard**: Glassmorphic UI for real-time monitoring of job lifecycles.
-- **🔒 Secure by Design**: JWT-based authentication and Role-Based Access Control (RBAC).
-- **📝 Execution Logs**: Detailed audit trails for every job execution, including failure stack traces.
-- **🐳 Containerized**: Fully Dockerized for seamless deployment across environments.
-- **🔄 Smart Resync**: Quartz-powered persistence ensures missed triggers are handled after downtime.
+- **Advanced Scheduling**: Support for one-time (timestamp-based) and recurring (Cron-based) jobs.
+- **Fault Tolerance**: Automatic retries with **Exponential Backoff** (10s, 20s, 40s...).
+- **Premium Dashboard**: Glassmorphic UI for real-time monitoring of job lifecycles.
+- **Secure by Design**: JWT-based authentication and Role-Based Access Control (RBAC).
+- **Execution Logs**: Detailed audit trails for every job execution, including failure stack traces.
+- **Containerized**: Fully Dockerized for seamless deployment across environments.
+- **Smart Resync**: Quartz-powered persistence ensures missed triggers are handled after downtime.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **Framework**: React 18 (Vite)
@@ -84,7 +80,7 @@ Traditional cron systems and simple task queues often fail to provide:
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 <p align="center">
   <img src="./assets/architecture.png" alt="Chronos Architecture" width="700" />
@@ -99,7 +95,7 @@ Chronos follows a classic **N-tier architecture**:
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
 chronos/
@@ -133,7 +129,7 @@ chronos/
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - **Java 21**
@@ -168,7 +164,7 @@ Navigate to `http://localhost:5173`.
 
 ---
 
-## 🔑 Environment Variables
+## Environment Variables
 
 ### Backend (.env)
 ```env
@@ -186,7 +182,7 @@ VITE_API_URL=http://localhost:8080/api
 
 ---
 
-## 🛡️ Security
+## Security
 
 - **Stateless Authentication**: Uses JWT (JSON Web Tokens) for all secured routes.
 - **Password Hashing**: BCrypt with a high cost factor.
@@ -196,16 +192,16 @@ VITE_API_URL=http://localhost:8080/api
 
 ---
 
-## 📈 Optimizations
+## Optimizations
 
-- **⚡ Quartz Clustering**: Prepared for horizontal scaling with database-backed job store.
-- **🧊 Lazy Loading**: React components are lazy-loaded to minimize initial bundle size.
-- **🚀 Transactional Consistency**: Complex transaction management ensuring logs are persisted even if jobs fail.
-- **🛡️ Interceptor Logic**: Centralized JWT management and error handling in Axios.
+- **Quartz Clustering**: Prepared for horizontal scaling with database-backed job store.
+- **Lazy Loading**: React components are lazy-loaded to minimize initial bundle size.
+- **Transactional Consistency**: Complex transaction management ensuring logs are persisted even if jobs fail.
+- **Interceptor Logic**: Centralized JWT management and error handling in Axios.
 
 ---
 
-## 🚧 Challenges Faced
+## Challenges Faced
 
 1. **Transactional Integrity**: Ensuring that job execution logs were saved correctly even when the primary job transaction failed.
 2. **Scheduling Sync**: Handling "Misfires" when the application is down and syncing Quartz triggers with the database state.
@@ -213,7 +209,7 @@ VITE_API_URL=http://localhost:8080/api
 
 ---
 
-## 🔮 Future Scope
+## Future Scope
 
 - **Kubernetes Orchestration**: Auto-scaling worker nodes based on job queue depth.
 - **Webhook Integration**: Triggering external services directly from the scheduler.
@@ -222,18 +218,14 @@ VITE_API_URL=http://localhost:8080/api
 
 ---
 
-## 📄 License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-## 🤝 Contact
+## Contact
 
 **Akshay Thapa**  
 - **LinkedIn**: [akshaythapa](https://www.linkedin.com/in/akshaythapa/)
 - **Email**: [akshay1509thapa@gmail.com](mailto:akshay1509thapa@gmail.com)
-
----
-
-<p align="center">Built with ❤️ by the Chronos Team</p>
