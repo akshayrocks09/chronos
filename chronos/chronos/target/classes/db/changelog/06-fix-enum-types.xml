@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="6-fix-enum-types-mysql" author="antigravity" dbms="mysql">
+        <sql>
+            ALTER TABLE jobs MODIFY COLUMN job_type ENUM('ONE_TIME', 'RECURRING');
+            ALTER TABLE jobs MODIFY COLUMN status ENUM('PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'CANCELLED', 'RETRYING', 'SCHEDULED');
+            ALTER TABLE job_execution_logs MODIFY COLUMN status ENUM('PENDING', 'RUNNING', 'COMPLETED', 'FAILED', 'CANCELLED', 'RETRYING', 'SCHEDULED');
+        </sql>
+    </changeSet>
+
+    <changeSet id="7-fix-user-role-mysql" author="antigravity" dbms="mysql">
+        <sql>
+            ALTER TABLE users MODIFY COLUMN role ENUM('ROLE_USER', 'ROLE_ADMIN');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

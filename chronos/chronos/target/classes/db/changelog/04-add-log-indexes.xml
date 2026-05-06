@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="4-log-indexes" author="chronos">
+        <!-- Speeds up log queries filtered by executed_at (dashboard polling, admin log page) -->
+        <createIndex indexName="idx_log_executed_at" tableName="job_execution_logs">
+            <column name="executed_at"/>
+        </createIndex>
+        <!-- Speeds up per-job log fetching (findTop10ByJobId...) -->
+        <createIndex indexName="idx_log_job_id" tableName="job_execution_logs">
+            <column name="job_id"/>
+        </createIndex>
+        <!-- Speeds up cross-user admin log queries filtered by status -->
+        <createIndex indexName="idx_log_status" tableName="job_execution_logs">
+            <column name="status"/>
+        </createIndex>
+        <!-- Composite: user's logs by status — used in getAllUserLogs() -->
+        <createIndex indexName="idx_job_user_status" tableName="jobs">
+            <column name="user_id"/>
+            <column name="status"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

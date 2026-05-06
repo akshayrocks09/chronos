@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <include file="classpath:db/changelog/01-initial-schema.xml"/>
+    <include file="classpath:db/changelog/02-add-indexes.xml"/>
+    <include file="classpath:db/changelog/03-quartz-schema.xml"/>
+    <include file="classpath:db/changelog/04-add-log-indexes.xml"/>
+    <include file="classpath:db/changelog/05-hardening-indexes-and-constraints.xml"/>
+    <include file="classpath:db/changelog/06-fix-enum-types.xml"/>
+
+</databaseChangeLog>
