@@ -1,0 +1,38 @@
+# Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*.DS_Store
+
+# Frontend
+node_modules/
+dist/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Chronos specific
+logs/
+run_output.txt
+run_output_fixed.txt
+test_output.txt
+test_output_2.txt
+test_output_3.txt
+token.txt
+login.json
+chronos_test_report.txt
