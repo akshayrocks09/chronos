@@ -155,6 +155,81 @@ Navigate to `http://localhost:5173`.
 
 ---
 
+## API Endpoints
+
+The system exposes a RESTful API secured by JWT. Base URL: `/api`
+
+### 1. Authentication (`/auth`)
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| POST | `/register` | Register a new user account | No |
+| POST | `/login` | Authenticate and receive JWT | No |
+
+### 2. Jobs (`/jobs`)
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/` | List all jobs for current user (paginated) | Yes |
+| POST | `/` | Create a new One-time or Cron job | Yes |
+| GET | `/{id}` | Get detailed status of a specific job | Yes |
+| PUT | `/{id}` | Update/Reschedule a job | Yes |
+| PATCH | `/{id}/cancel` | Cancel a running/scheduled job | Yes |
+| DELETE | `/{id}` | Permanently delete a job and its logs | Yes |
+| POST | `/{id}/trigger` | Manually trigger a job to run immediately | Yes |
+
+### 3. Monitoring & Logs (`/jobs`)
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/logs` | Get execution history for all my jobs | Yes |
+| GET | `/{id}/logs` | Get execution history for a specific job | Yes |
+| GET | `/stats` | Get personal job success/failure statistics | Yes |
+
+### 4. Admin (`/admin`)
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| GET | `/jobs` | View every job in the system (all users) | ADMIN |
+| GET | `/logs` | View every execution log in the system | ADMIN |
+| GET | `/stats` | System-wide health and throughput stats | ADMIN |
+
+---
+
+## Database Schema
+
+Chronos uses a relational schema optimized for high-concurrency scheduling.
+
+1. **Users**: Stores credentials (BCrypt hashed) and roles.
+2. **Jobs**: Stores job definitions (payloads, cron expressions, target timestamps).
+3. **Job Execution Logs**: Stores audit trails, execution durations, and failure stack traces.
+4. **Quartz Tables**: Internal tables managed by Quartz for clustering and misfire handling (prefixed with `QRTZ_`).
+
+---
+
+## How to Use
+
+### 1. Access the Dashboard
+Navigate to `http://localhost:5173`. Register a new account or login with your admin credentials.
+
+### 2. Create a One-Time Job
+1. Click **"New Job"**.
+2. Select **"One-Time"** type.
+3. Enter the Job Name, Description, and a future **Timestamp**.
+4. Set the **Target URL** (the endpoint Chronos will hit when the time comes).
+5. Click **Schedule**.
+
+### 3. Create a Recurring Job
+1. Click **"New Job"**.
+2. Select **"Recurring"** type.
+3. Provide a standard **Cron Expression** (e.g., `0 0/5 * * * ?` for every 5 minutes).
+4. Chronos will automatically calculate and display the **"Next Run Time"**.
+
+### 4. Monitor Execution
+Watch the **Status Icons** on the dashboard:
+- 🔵 **Scheduled**: Waiting for the next trigger.
+- 🟡 **Running**: Currently being executed by a worker.
+- ✅ **Completed**: Successfully finished.
+- ❌ **Failed**: Execution failed; check logs for the stack trace.
+
+---
+
 ## Environment Variables
 
 ### Backend (.env)
@@ -172,6 +247,22 @@ MAIL_PASSWORD=your_app_password
 ```env
 VITE_API_URL=http://localhost:8080/api
 ```
+
+---
+
+## Design Decisions
+
+### 1. Quartz Scheduler vs. Spring `@Scheduled`
+We chose **Quartz** because standard Spring scheduling is in-memory and non-persistent. Quartz allows us to:
+- Persist jobs in a database so they survive server restarts.
+- Support **Clustering**: Multiple backend instances can share the same job pool without duplicate executions.
+- Handle **Misfires**: If the server is down during a scheduled time, Quartz can catch up once it reboots.
+
+### 2. Stateless Security (JWT)
+To support horizontal scaling, we use stateless JWT authentication. This ensures that any backend node can verify a user request without needing session sharing (Redis/Sticky Sessions).
+
+### 3. Fail-Fast Startup
+The system validates critical environment variables (like `JWT_SECRET` and `DB_URL`) at boot time. If these are missing, the application refuses to start, preventing insecure or broken deployments.
 
 ---
 
