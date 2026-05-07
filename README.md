@@ -164,6 +164,8 @@ DB_USERNAME=root
 DB_PASSWORD=root
 JWT_SECRET=your_base64_encoded_secret_key_here
 ADMIN_PASSWORD=your_secure_admin_password
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
 ```
 
 ### Frontend (.env)
@@ -179,7 +181,7 @@ VITE_API_URL=http://localhost:8080/api
 - **Password Hashing**: BCrypt with a high cost factor.
 - **RBAC**: Role-Based Access Control (ADMIN/USER) for job and log visibility.
 - **Input Validation**: Strict DTO validation to prevent injection attacks.
-- **Fail-Fast Policy**: System won't boot without a secure `JWT_SECRET` and `ADMIN_PASSWORD`.
+- **Fail-Fast Policy**: System won't boot without a secure `JWT_SECRET`, `ADMIN_PASSWORD`, and `MAIL_` credentials.
 
 ---
 
