@@ -36,3 +36,5 @@ test_output_3.txt
 token.txt
 login.json
 chronos_test_report.txt
+
+.env
