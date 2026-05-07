@@ -223,10 +223,10 @@ Navigate to `http://localhost:5173`. Register a new account or login with your a
 
 ### 4. Monitor Execution
 Watch the **Status Icons** on the dashboard:
-- 🔵 **Scheduled**: Waiting for the next trigger.
-- 🟡 **Running**: Currently being executed by a worker.
-- ✅ **Completed**: Successfully finished.
-- ❌ **Failed**: Execution failed; check logs for the stack trace.
+- **Scheduled**: Waiting for the next trigger.
+- **Running**: Currently being executed by a worker.
+- **Completed**: Successfully finished.
+- **Failed**: Execution failed; check logs for the stack trace.
 
 ---
 
